@@ -1,10 +1,12 @@
 package com.dellas0095.assesmobpro2
 
 import android.content.res.Configuration
+import android.graphics.pdf.models.ListItem
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -16,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.dellas0095.assesmobpro2.model.Catatan
 import com.dellas0095.assesmobpro2.ui.theme.Assesmobpro2Theme
 
 class MainActivity : ComponentActivity() {
@@ -51,10 +54,16 @@ fun MainScreen(){
 
 @Composable
 fun ScreenContent(modifier: Modifier = Modifier){
-    Text(
-        text = "Hello Android!",
-        modifier = modifier
-    )
+    La
+}
+
+@Composable
+fun ListItem(catatan: Catatan) {
+    Column {
+        Text(text = catatan.judul)
+        Text(text = catatan.catatan)
+        Text(text = catatan.tanggal)
+    }
 }
 
 @Preview(showBackground = true)
