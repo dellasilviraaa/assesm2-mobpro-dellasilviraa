@@ -57,7 +57,7 @@ fun DetailScreen(navController: NavController, id: Long? = null) {
         topBar = {
             TopAppBar(
                 navigationIcon = {
-                    IconButton(onClick = {navController.popBackStack()}) {
+                    IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = stringResource(R.string.kembali),
@@ -76,7 +76,7 @@ fun DetailScreen(navController: NavController, id: Long? = null) {
                     titleContentColor = MaterialTheme.colorScheme.primary
                 ),
                 actions = {
-                    IconButton(onClick = {navController.popBackStack()}) {
+                    IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
                             imageVector = Icons.Outlined.Check,
                             contentDescription = stringResource(R.string.simpan),
@@ -89,9 +89,9 @@ fun DetailScreen(navController: NavController, id: Long? = null) {
     ) { padding ->
         FormCatatan(
             title = judul,
-            onTitleChange = {judul = it},
+            onTitleChange = { judul = it },
             desc = catatan,
-            onDescChange = {catatan = it},
+            onDescChange = { catatan = it },
             modifier = Modifier.padding(padding)
         )
     }
@@ -100,16 +100,18 @@ fun DetailScreen(navController: NavController, id: Long? = null) {
 @Composable
 fun FormCatatan(
     title: String, onTitleChange: (String) -> Unit,
-    desc : String, onDescChange: (String) -> Unit,
+    desc: String, onDescChange: (String) -> Unit,
     modifier: Modifier
 ) {
     Column(
-        modifier = modifier.fillMaxSize().padding(16.dp),
+        modifier = modifier
+            .fillMaxSize()
+            .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         OutlinedTextField(
             value = title,
-            onValueChange = {onTitleChange(it)},
+            onValueChange = { onTitleChange(it) },
             label = { Text(text = stringResource(R.string.judul)) },
             singleLine = true,
             keyboardOptions = KeyboardOptions(
@@ -120,7 +122,7 @@ fun FormCatatan(
         )
         OutlinedTextField(
             value = desc,
-            onValueChange = {onDescChange(it)},
+            onValueChange = { onDescChange(it) },
             label = { Text(text = stringResource(R.string.isi_catatan)) },
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.Sentences
@@ -129,6 +131,7 @@ fun FormCatatan(
         )
     }
 }
+
 @Preview(showBackground = true)
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
 @Composable

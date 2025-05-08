@@ -35,7 +35,7 @@ class MainViewModel : ViewModel() {
         ),
         Catatan(
             5,
-            "Nama Pembeli: ",
+            "Nama Pembeli:  ",
             "tanggal order",
             "jumlah order"
 
@@ -52,7 +52,9 @@ class MainViewModel : ViewModel() {
             "tanggal order",
             "jumlah order"
 
-        ),
+        )
     )
-
+    fun getCatatan(id: Long):Catatan? {
+        return data.find { it.id == id }
+    }
 }
