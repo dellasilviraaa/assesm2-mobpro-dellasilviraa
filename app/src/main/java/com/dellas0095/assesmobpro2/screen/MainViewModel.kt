@@ -14,7 +14,7 @@ class MainViewModel : viewModel(){
     ),
         Catatan(
             2,
-            "Nama Pembeli: "
+            "Nama Pembeli:"
             "tanggal order"
             "jumlah order"
 
