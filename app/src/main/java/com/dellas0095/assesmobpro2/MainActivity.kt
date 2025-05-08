@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -27,6 +29,7 @@ import androidx.compose.ui.tooling.data.EmptyGroup.data
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.dellas0095.assesmobpro2.model.Catatan
+import com.dellas0095.assesmobpro2.screen.MainViewModel
 import com.dellas0095.assesmobpro2.ui.theme.Assesmobpro2Theme
 
 class MainActivity : ComponentActivity() {
@@ -62,6 +65,19 @@ fun MainScreen(){
 
 @Composable
 fun ScreenContent(modifier: Modifier = Modifier) {
+    val viewModel: MainViewModel = viewModel()
+    val data = emptyList<Catatan>()
+
+    if (data.isEmpty()){
+        Column (
+            modifier = modifier.fillMaxSize().padding(16.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ){
+            Text(text = stringResource(id = R.string.list_kosong))
+        }
+    }
+    else{
     LazyColumn(
         modifier = modifier.fillMaxSize()
     ){
