@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import com.dellas0095.assesmobpro2.model.Catatan
 
 class MainViewModel : ViewModel() {
-
     val data = listOf(
         Catatan(
             1,

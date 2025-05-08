@@ -86,6 +86,7 @@ fun DetailScreen(navController: NavController, id: Long? = null) {
                 }
             )
         }
+
     ) { padding ->
         FormCatatan(
             title = judul,
