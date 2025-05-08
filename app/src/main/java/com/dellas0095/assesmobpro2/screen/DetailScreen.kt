@@ -97,6 +97,7 @@ fun DetailScreen(navController: NavController, id: Long? = null) {
     }
 }
 
+
 @Composable
 fun FormCatatan(
     title: String, onTitleChange: (String) -> Unit,
