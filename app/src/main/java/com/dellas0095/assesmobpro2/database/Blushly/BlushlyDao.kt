@@ -8,20 +8,20 @@ import com.dellas0095.assesmobpro2.model.Blushly
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface CatatanDao {
+interface BlushlyDao {
 
     @Insert
-    suspend fun insert(catatan : Blushly)
+    suspend fun insert(blushly : Blushly)
 
     @Update
-    suspend fun update(catatan: Blushly)
+    suspend fun update(blushly: Blushly)
 
-    @Query("SELECT * FROM catatan ORDER BY tanggal DESC")
-    fun getCatatan(): Flow<List<Blushly>>
+    @Query("SELECT * FROM blushly ORDER BY tanggal DESC")
+    fun getBlushly(): Flow<List<Blushly>>
 
-    @Query("SELECT * FROM catatan WHERE id = :id")
-    suspend fun getCatatanById(id: Long): Blushly?
+    @Query("SELECT * FROM blushly WHERE id = :id")
+    suspend fun getBlushlyById(id: Long): Blushly?
 
-    @Query("DELETE FROM catatan WHERE id = :id")
+    @Query("DELETE FROM blushly WHERE id = :id")
     suspend fun deleteById(id: Long)
 }
