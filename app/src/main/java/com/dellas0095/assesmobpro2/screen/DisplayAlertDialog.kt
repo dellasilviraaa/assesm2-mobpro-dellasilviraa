@@ -13,7 +13,7 @@ import com.dellas0095.assesmobpro2.ui.theme.Assesmobpro2Theme
 @Composable
 fun DisplayAlertDialog(
     onDismissRequest: () -> Unit,
-    onConfirmation: () ->Unit,
+    onConfirmation: () -> Unit
 ) {
     AlertDialog(
         text = { Text(text = stringResource(R.string.pesan_hapus)) },

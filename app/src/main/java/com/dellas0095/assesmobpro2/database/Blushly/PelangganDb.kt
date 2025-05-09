@@ -4,24 +4,25 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.dellas0095.assesmobpro2.model.Blushly
+import com.dellas0095.assesmobpro2.model.Pelanggan
 
-@Database(entities = [Blushly::class], version = 1, exportSchema = false)
-abstract class BlushlyDb : RoomDatabase() {
 
-    abstract val dao: BlushlyDao
+@Database(entities = [Pelanggan::class], version = 1, exportSchema = false)
+abstract class PelangganDb : RoomDatabase() {
+
+    abstract val dao: PelangganDao
     companion object {
         @Volatile
-        private var INSTANCE: BlushlyDb? = null
+        private var INSTANCE: PelangganDb? = null
 
-        fun getInstance(context: Context): BlushlyDb {
+        fun getInstance(context: Context): PelangganDb {
             synchronized(this) {
                 var instance = INSTANCE
                 if (instance == null) {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
-                        BlushlyDb::class.java,
-                        "blushly.db"
+                        PelangganDb::class.java,
+                        "pelanggan.db"
                     ).build()
                     INSTANCE = instance
                 }

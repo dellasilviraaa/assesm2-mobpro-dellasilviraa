@@ -45,7 +45,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.dellas0095.assesmobpro2.R
-import com.dellas0095.assesmobpro2.model.Blushly
+import com.dellas0095.assesmobpro2.model.Pelanggan
 import com.dellas0095.assesmobpro2.navigation.Screen
 import com.dellas0095.assesmobpro2.ui.theme.Assesmobpro2Theme
 import com.dellas0095.assesmobpro2.util.SettingsDataStrore
@@ -100,7 +100,7 @@ fun MainScreen(navController: NavHostController) {
             ) {
                 Icon(
                     imageVector = Icons.Filled.Add,
-                    contentDescription = stringResource(R.string.tambah_catatan),
+                    contentDescription = stringResource(R.string.tambah_pelanggan),
                     tint = MaterialTheme.colorScheme.primary
                 )
             }
@@ -142,7 +142,7 @@ fun ScreenContent(
                 contentPadding = PaddingValues(bottom = 84.dp)
             ) {
                 items(data) {
-                    ListItem(catatan = it) {
+                    ListItem(pelanggan = it) {
                         navController.navigate(Screen.FormUbah.withId(it.id))
                     }
                     HorizontalDivider()
@@ -157,7 +157,7 @@ fun ScreenContent(
                 contentPadding = PaddingValues(8.dp, 8.dp, 8.dp, 84.dp)
             ) {
                 items(data) {
-                    GridItem(catatan = it) {
+                    GridItem(pelanggan = it) {
                         navController.navigate(Screen.FormUbah.withId(it.id))
                     }
                 }
@@ -167,7 +167,7 @@ fun ScreenContent(
 }
 
 @Composable
-fun ListItem(catatan: Blushly, onClick: () -> Unit) {
+fun ListItem(pelanggan: Pelanggan, onClick: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -175,22 +175,22 @@ fun ListItem(catatan: Blushly, onClick: () -> Unit) {
             .padding(16.dp)
     ) {
         Text(
-            text = catatan.judul,
-            maxLines = 1,
+            text = pelanggan.nama,
+            maxLines = 2,
             overflow = TextOverflow.Ellipsis,
             fontWeight = FontWeight.Bold
         )
         Text(
-            text = catatan.catatan,
+            text = pelanggan.jumlah,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis
         )
-        Text(text = catatan.tanggal)
+        Text(text = pelanggan.variant)
     }
 }
 
 @Composable
-fun GridItem(catatan: Blushly, onClick: () -> Unit) {
+fun GridItem(pelanggan: Pelanggan, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxSize()
@@ -205,17 +205,17 @@ fun GridItem(catatan: Blushly, onClick: () -> Unit) {
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             Text(
-                text = catatan.judul,
+                text = pelanggan.nama,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
                 fontWeight = FontWeight.Bold
             )
             Text(
-                text = catatan.catatan,
+                text = pelanggan.jumlah,
                 maxLines = 4,
                 overflow = TextOverflow.Ellipsis
             )
-            Text(text = catatan.tanggal)
+            Text(text = pelanggan.variant)
         }
     }
 }
