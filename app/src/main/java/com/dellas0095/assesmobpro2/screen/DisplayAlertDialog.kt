@@ -7,6 +7,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.dellas0095.assesmobpro2.R
 import com.dellas0095.assesmobpro2.ui.theme.Assesmobpro2Theme
 
 @Composable

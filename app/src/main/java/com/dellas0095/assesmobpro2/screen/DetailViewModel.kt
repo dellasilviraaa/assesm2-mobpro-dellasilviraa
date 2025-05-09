@@ -1,15 +1,18 @@
-package com.dellas0095.assesmobpro2.screen
+package com.dellas0095.assesmobpro2.ui.screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.dellas0095.assesmobpro2.database.Blushly.BlushlyDao
 import com.dellas0095.assesmobpro2.model.Blushly
+
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class DetailViewModel(private val dao: Blushly) : ViewModel() {
+
+class DetailViewModel(private val dao: BlushlyDao) : ViewModel() {
 
     private val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
 

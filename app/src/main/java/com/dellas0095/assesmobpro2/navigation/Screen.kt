@@ -1,6 +1,7 @@
 package com.dellas0095.assesmobpro2.navigation
 
-import com.dellas0095.assesmobpro2.screen.KEY_ID_BLUSHLY
+
+import com.dellas0095.assesmobpro2.ui.screen.KEY_ID_BLUSHLY
 
 sealed class Screen(val route: String) {
 

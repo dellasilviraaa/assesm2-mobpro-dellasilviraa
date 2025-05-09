@@ -1,4 +1,4 @@
-package com.dellas0095.assesmobpro2.screen
+package com.dellas0095.assesmobpro2.ui.screen
 
 import android.content.res.Configuration
 import android.widget.Toast
@@ -40,10 +40,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.dellas0095.assesmobpro2.R
+import com.dellas0095.assesmobpro2.screen.DisplayAlertDialog
 import com.dellas0095.assesmobpro2.ui.theme.Assesmobpro2Theme
 import com.dellas0095.assesmobpro2.util.ViewModelFactory
 
-onst val KEY_ID_CATATAN = "idCatatan"
+const val KEY_ID_BLUSHLY = "idBlushly"
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -165,7 +166,7 @@ fun DeleteAction(delete: () -> Unit) {
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
 @Composable
 fun DetailScreenPreview() {
-    Mobpro1Theme {
+    Assesmobpro2Theme {
         DetailScreen(rememberNavController())
     }
 }

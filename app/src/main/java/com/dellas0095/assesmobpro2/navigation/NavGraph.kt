@@ -7,9 +7,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.dellas0095.assesmobpro2.screen.DetailScreen
-import com.dellas0095.assesmobpro2.screen.KEY_ID_BLUSHLY
-import com.dellas0095.assesmobpro2.screen.MainScreen
+import com.dellas0095.assesmobpro2.ui.screen.DetailScreen
+import com.dellas0095.assesmobpro2.ui.screen.KEY_ID_BLUSHLY
+import com.dellas0095.assesmobpro2.ui.screen.MainScreen
 
 @Composable
 fun SetupNavGraph(navController: NavHostController = rememberNavController()){

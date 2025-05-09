@@ -3,7 +3,7 @@ package com.dellas0095.assesmobpro2.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "catatan")
+@Entity(tableName = "blushly")
 data class Blushly(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0L,
