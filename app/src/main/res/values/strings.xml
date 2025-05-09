@@ -19,4 +19,7 @@
     <string name="tambah_pelanggan">Tambah pelanggan</string>
     <string name="isi_pelanggan">Isi Catatan</string>
     <string name="edit_pelanggan">Ubah pelanggan</string>
+    <string name="sampah">Sampah</string>
+    <string name="pulihkan">Pulihkan</string>
+    <string name="hapus_perm">Hapus permanen</string>
 </resources>

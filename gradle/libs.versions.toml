@@ -12,6 +12,7 @@ composeBom = "2024.04.01"
 navCompose = "2.8.7"
 roomRuntime = "2.6.1"
 datastorePreferences = "1.1.4"
+navigationRuntimeAndroid = "2.9.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -35,6 +36,7 @@ androidx-room-compiler = { group = "androidx.room", name = "room-compiler", vers
 androidx-room-ktx      = { group = "androidx.room", name = "room-ktx", version.ref = "roomRuntime" }
 androidx-room-runtime  = { group = "androidx.room", name = "room-runtime", version.ref = "roomRuntime" }
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
+androidx-navigation-runtime-android = { group = "androidx.navigation", name = "navigation-runtime-android", version.ref = "navigationRuntimeAndroid" }
 
 
 

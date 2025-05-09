@@ -11,4 +11,5 @@ sealed class Screen(val route: String) {
 
         fun withId(id: Long) = "detailScreen/$id"
     }
+    data object TrashScreen: Screen("TrashScreen")
 }
