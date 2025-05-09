@@ -70,9 +70,10 @@ fun MainScreen(navController: NavHostController) {
                     titleContentColor = MaterialTheme.colorScheme.primary
                 ),
                 actions = {
-                    IconButton(onClick = { CoroutineScope(Dispatchers.IO).launch {
-                        dataStore.saveLayout(!showList)
-                    }
+                    IconButton(onClick = {
+                        CoroutineScope(Dispatchers.IO).launch {
+                            dataStore.saveLayout(!showList)
+                        }
                     }) {
                         Icon(
                             painter = painterResource(
@@ -110,7 +111,11 @@ fun MainScreen(navController: NavHostController) {
 }
 
 @Composable
-fun ScreenContent(showList: Boolean, modifier: Modifier = Modifier, navController: NavHostController) {
+fun ScreenContent(
+    showList: Boolean,
+    modifier: Modifier = Modifier,
+    navController: NavHostController
+) {
     val context = LocalContext.current
     val factory = ViewModelFactory(context)
     val viewModel: MainViewModel = viewModel(factory = factory)
@@ -143,8 +148,7 @@ fun ScreenContent(showList: Boolean, modifier: Modifier = Modifier, navControlle
                     HorizontalDivider()
                 }
             }
-        }
-        else{
+        } else {
             LazyVerticalStaggeredGrid(
                 modifier = modifier.fillMaxSize(),
                 columns = StaggeredGridCells.Fixed(2),
@@ -152,9 +156,9 @@ fun ScreenContent(showList: Boolean, modifier: Modifier = Modifier, navControlle
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 contentPadding = PaddingValues(8.dp, 8.dp, 8.dp, 84.dp)
             ) {
-                items(data){
+                items(data) {
                     GridItem(catatan = it) {
-                        navController.navigate(Screen.FormUbah.withId (it.id))
+                        navController.navigate(Screen.FormUbah.withId(it.id))
                     }
                 }
             }
@@ -184,19 +188,22 @@ fun ListItem(catatan: Blushly, onClick: () -> Unit) {
         Text(text = catatan.tanggal)
     }
 }
+
 @Composable
-fun GridItem(catatan: Blushly, onClick: () -> Unit){
+fun GridItem(catatan: Blushly, onClick: () -> Unit) {
     Card(
-        modifier = Modifier.fillMaxSize().clickable { onClick() },
+        modifier = Modifier
+            .fillMaxSize()
+            .clickable { onClick() },
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface,
         ),
         border = BorderStroke(1.dp, DividerDefaults.color)
-    ){
-        Column (
+    ) {
+        Column(
             modifier = Modifier.padding(8.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
-        ){
+        ) {
             Text(
                 text = catatan.judul,
                 maxLines = 2,
