@@ -43,7 +43,7 @@ import com.dellas0095.assesmobpro2.R
 import com.dellas0095.assesmobpro2.ui.theme.Assesmobpro2Theme
 import com.dellas0095.assesmobpro2.util.ViewModelFactory
 
-const val KEY_ID_BLUSHLY = "idBlushly"
+onst val KEY_ID_CATATAN = "idCatatan"
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -52,8 +52,10 @@ fun DetailScreen(navController: NavHostController, id : Long? = null) {
     val factory = ViewModelFactory(context)
     val viewModel: DetailViewModel = viewModel(factory = factory)
 
+
     var judul by remember { mutableStateOf("") }
     var catatan by remember { mutableStateOf("") }
+    var showDialog by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
         if (id == null) return@LaunchedEffect
@@ -105,8 +107,7 @@ fun DetailScreen(navController: NavHostController, id : Long? = null) {
                     }
                     if (id != null){
                         DeleteAction {
-                            viewModel.delete(id)
-                            navController.popBackStack()
+                            showDialog = true
                         }
                     }
                 }
@@ -121,6 +122,14 @@ fun DetailScreen(navController: NavHostController, id : Long? = null) {
             onDescChange = { catatan = it },
             modifier = Modifier.padding(padding)
         )
+        if (id != null && showDialog){
+            DisplayAlertDialog(
+                onDismissRequest = { showDialog = false}) {
+                showDialog = false
+                viewModel.delete(id)
+                navController.popBackStack()
+            }
+        }
     }
 }
 
@@ -156,7 +165,7 @@ fun DeleteAction(delete: () -> Unit) {
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
 @Composable
 fun DetailScreenPreview() {
-    Assesmobpro2Theme {
+    Mobpro1Theme {
         DetailScreen(rememberNavController())
     }
 }
