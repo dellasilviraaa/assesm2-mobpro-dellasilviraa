@@ -7,21 +7,21 @@ import androidx.room.RoomDatabase
 import com.dellas0095.assesmobpro2.model.Blushly
 
 @Database(entities = [Blushly::class], version = 1, exportSchema = false)
-abstract class CatatanDb : RoomDatabase() {
+abstract class BlushlyDb : RoomDatabase() {
 
-    abstract val dao: CatatanDao
+    abstract val dao: BlushlyDao
     companion object {
         @Volatile
-        private var INSTANCE: CatatanDb? = null
+        private var INSTANCE: BlushlyDb? = null
 
-        fun getInstance(context: Context): CatatanDb {
+        fun getInstance(context: Context): BlushlyDb {
             synchronized(this) {
                 var instance = INSTANCE
                 if (instance == null) {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
-                        CatatanDb::class.java,
-                        "catatan.db"
+                        BlushlyDb::class.java,
+                        "blushly.db"
                     ).build()
                     INSTANCE = instance
                 }
