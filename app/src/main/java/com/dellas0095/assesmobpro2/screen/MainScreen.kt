@@ -2,15 +2,31 @@ package com.dellas0095.assesmobpro2.screen
 
 import android.content.res.Configuration
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.*
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -20,14 +36,15 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.dellas0095.assesmobpro2.R
-import com.dellas0095.assesmobpro2.model.Catatan
+import com.dellas0095.assesmobpro2.model.Blushly
 import com.dellas0095.assesmobpro2.navigation.Screen
 import com.dellas0095.assesmobpro2.ui.theme.Assesmobpro2Theme
-
+import com.dellas0095.assesmobpro2.util.ViewModelFactory
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(navController: NavHostController) {
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -36,7 +53,7 @@ fun MainScreen(navController: NavHostController) {
                 },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.primary
+                    titleContentColor = MaterialTheme.colorScheme.primary,
                 )
             )
         },
@@ -54,53 +71,48 @@ fun MainScreen(navController: NavHostController) {
             }
         }
     ) { innerPadding ->
-        ScreenContent(modifier = Modifier.padding(innerPadding), navController)
+        ScreenContent(Modifier.padding(innerPadding), navController)
     }
 }
 
 @Composable
 fun ScreenContent(modifier: Modifier = Modifier, navController: NavHostController) {
-    val viewModel: MainViewModel = viewModel()
-    val data = viewModel.data
-
+    val context = LocalContext.current
+    val factory = ViewModelFactory(context)
+    val viewModel: MainViewModel = viewModel(factory = factory)
+    val data by viewModel.data.collectAsState()
 
     if (data.isEmpty()) {
-
-        Column(
-            modifier = modifier
-                .fillMaxSize()
-                .padding(40.dp),
+        Column (
+            modifier = modifier.fillMaxSize().padding(1.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(
-                text = stringResource(R.string.list_kosong),
-                style = MaterialTheme.typography.bodyLarge
-            )
+        ){
+            Text(text = stringResource(id = R.string.list_kosong))
         }
-    } else {
+    }
+    else {
         LazyColumn(
             modifier = modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
             contentPadding = PaddingValues(bottom = 84.dp)
-        ) {
+        ){
             items(data) {
                 ListItem(catatan = it) {
                     navController.navigate(Screen.FormUbah.withId(it.id))
                 }
+                HorizontalDivider()
             }
-        }
-    }
+        } }
 }
 
 @Composable
-fun ListItem(catatan: Catatan, onClick: () -> Unit) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
+fun ListItem(catatan: Blushly, onClick: () -> Unit) {
+    Column (
+        modifier = Modifier.fillMaxWidth()
             .clickable { onClick() }
-            .padding(16.dp)
-    ) {
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ){
         Text(
             text = catatan.judul,
             maxLines = 1,
@@ -114,8 +126,8 @@ fun ListItem(catatan: Catatan, onClick: () -> Unit) {
         )
         Text(text = catatan.tanggal)
     }
-}
 
+}
 @Preview(showBackground = true)
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
 @Composable
